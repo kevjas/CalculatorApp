@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Calculator_App</string>
+    <string name="result">Result</string>
+    <string name="enter_first_value">Enter first value</string>
+    <string name="enter_second_value">Enter second value</string>
+    <string name="pyth">⊿</string>
+    <string name="o">o</string>
+    <string name="cyl">◭</string>
+    <string name="mult">*</string>
+    <string name="sqrt">√</string>
+    <string name="proc">%</string>
+    <string name="add">+</string>
+    <string name="sub">–</string>
+    <string name="div">/</string>
 </resources>
