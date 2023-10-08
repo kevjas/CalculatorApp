@@ -1,132 +1,107 @@
 package com.example.calculator_app
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var retrofit: Retrofit
+
     //Value 1 input
-    var editText: EditText? = null
+    lateinit var editText1: TextInputEditText
+
     //Value 2 input
-    var editText2: EditText? = null
+    lateinit var editText2: TextInputEditText
+
     //Result display
-    var textView: TextView? = null
+    lateinit var resultTv: TextView
 
-    lateinit var btnAdd : Button //Addition
-    lateinit var btnSub : Button //Subtraction
-    lateinit var btnDiv : Button //Divide
-
-    lateinit var btnMul : Button //Multiplication
-    lateinit var btnSqR : Button //Square Root
-    lateinit var btnPro : Button //Procentage
-
-    lateinit var btnPyt : Button //Pythagorean theorem
-    lateinit var btnCir : Button //Circle Area
-    lateinit var btnCyl : Button //Cylinder Volume
-
+    val btnAdd: Button by lazy { findViewById(R.id.btAdd) }
+    val btnSub: Button by lazy { findViewById(R.id.btSub) }
+    val btnDiv: Button by lazy { findViewById(R.id.btDiv) }
+    val btnMul: Button by lazy { findViewById(R.id.btMul) }
+    val btnSqR: Button by lazy { findViewById(R.id.btSqR) }
+    val btnPro: Button by lazy { findViewById(R.id.btPro) }
+    val btnPyt: Button by lazy { findViewById(R.id.btPyt) }
+    val btnCir: Button by lazy { findViewById(R.id.btCir) }
+    val btnCyl: Button by lazy { findViewById(R.id.btCyl) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        editText = findViewById<View>(R.id.editText1) as EditText
-        editText2 = findViewById<View>(R.id.editText2) as EditText
-        textView = findViewById<View>(R.id.textView) as TextView
+        editText1 = findViewById(R.id.editText1)
+        editText2 = findViewById(R.id.editText2)
+        resultTv = findViewById(R.id.textView)
 
-        btnAdd = findViewById(R.id.btAdd)
-        btnSub = findViewById(R.id.btSub)
-        btnDiv = findViewById(R.id.btDiv)
-        btnMul = findViewById(R.id.btMul)
-        btnSqR = findViewById(R.id.btSqR)
-        btnPro = findViewById(R.id.btPro)
-        btnPyt = findViewById(R.id.btPyt)
-        btnCir = findViewById(R.id.btCir)
-        btnCyl = findViewById(R.id.btCyl)
+        /*
 
-        btnAdd.setOnClickListener {
-            val s1 = editText!!.text.toString()
-            val s2 = editText2!!.text.toString()
-            val tal1 = s1.toDouble()
-            val tal2 = s2.toDouble()
-            val result = tal1 + tal2
-            textView!!.text = "$result"
-        }
 
-        btnSub.setOnClickListener {
-            val s1 = editText!!.text.toString()
-            val s2 = editText2!!.text.toString()
-            val tal1 = s1.toDouble()
-            val tal2 = s2.toDouble()
-            val result = tal1 - tal2
-            textView!!.text = "$result"
-        }
 
-        btnDiv.setOnClickListener {
-            val s1 = editText!!.text.toString()
-            val s2 = editText2!!.text.toString()
-            val tal1 = s1.toDouble()
-            val tal2 = s2.toDouble()
 
-            if (tal2 != 0.0) {
-                val result = tal1 / tal2
-                textView!!.text = "$result"
-            } else {
-                Toast.makeText(this@MainActivity, "Cannot divide by zero", Toast.LENGTH_LONG).show()
-            }
-        }
 
-        btnMul.setOnClickListener {
-            val s1 = editText!!.text.toString()
-            val s2 = editText2!!.text.toString()
-            val tal1 = s1.toDouble()
-            val tal2 = s2.toDouble()
-            val result = tal1 * tal2
-            textView!!.text = "$result"
-        }
+                     btnMul.setOnClickListener
+                     {
+                         val s1 = editText!!.text.toString()
+                         val s2 = editTex2!!.text.toString()
+                         val tal1 = s1.toDouble()
+                         val tal2 = s2.toDouble()
+                         val result = tal1 * tal2
+                         resultTv!!.text = "$result"
+                     }
 
-        btnSqR.setOnClickListener {
-            val s1 = editText!!.text.toString()
-            val tal1 = s1.toDouble()
-            val result = Math.sqrt(tal1)
-            textView!!.text = "$result"
-        }
+                     btnSqR.setOnClickListener
+                     {
+                         val s1 = editText!!.text.toString()
+                         val tal1 = s1.toDouble()
+                         val result = sqrt(tal1)
+                         resultTv!!.text = "$result"
+                     }
 
-        btnPro.setOnClickListener {
-            val s1 = editText!!.text.toString()
-            val s2 = editText2!!.text.toString()
-            val tal1 = s1.toDouble()
-            val tal2 = s2.toDouble()
-            val result = tal1 * tal2 / 100
-            textView!!.text = "$result"
-        }
+                     btnPro.setOnClickListener
+                     {
+                         val s1 = editText!!.text.toString()
+                         val s2 = editTex2!!.text.toString()
+                         val tal1 = s1.toDouble()
+                         val tal2 = s2.toDouble()
+                         val result = tal1 * tal2 / 100
+                         resultTv!!.text = "$result"
+                     }
 
-        btnPyt.setOnClickListener {
-            val s1 = editText!!.text.toString()
-            val s2 = editText2!!.text.toString()
-            val tal1 = s1.toDouble()
-            val tal2 = s2.toDouble()
-            val result = tal1 * tal1 + tal2 * tal2
-            textView!!.text = "$result"
-        }
+                     btnPyt.setOnClickListener
+                     {
+                         val s1 = editText!!.text.toString()
+                         val s2 = editTex2!!.text.toString()
+                         val tal1 = s1.toDouble()
+                         val tal2 = s2.toDouble()
+                         val result = tal1 * tal1 + tal2 * tal2
+                         resultTv!!.text = "$result"
+                     }
 
-        btnCir.setOnClickListener {
-            val s1 = editText!!.text.toString()
-            val tal1 = s1.toDouble()
-            val result = tal1 * tal1 * 3.14
-            textView!!.text = "$result"
-        }
+                     btnCir.setOnClickListener
+                     {
+                         val s1 = editText!!.text.toString()
+                         val tal1 = s1.toDouble()
+                         val result = tal1 * tal1 * 3.14
+                         resultTv!!.text = "$result"                     }
 
-        btnCyl.setOnClickListener {
-            val s1 = editText!!.text.toString()
-            val s2 = editText2!!.text.toString()
-            val tal1 = s1.toDouble()
-            val tal2 = s2.toDouble()
-            val result = tal2 * 3.14 * (tal1 * tal1)
-            textView!!.text = "$result"
-        }
-    }
-}
+                     btnCyl.setOnClickListener
+                     {
+                         val s1 = editText!!.text.toString()
+                         val s2 = editTex2!!.text.toString()
+                         val tal1 = s1.toDouble()
+                         val tal2 = s2.toDouble()
+                         val result = tal2 * 3.14 * (tal1 * tal1)
+                         resultTv!!.text = "$result"
+         */
+
+    }}
+

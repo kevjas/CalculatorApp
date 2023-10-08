@@ -3,197 +3,212 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/darkgray"
+    android:background="@color/grey"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RESULT"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:background="#393939"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:fontFamily="@font/roboto_medium"
-            android:padding="8dp"
-            android:textColorHint="@color/darkblue"
-            android:layout_margin="8dp"
-            android:gravity="center"
-            android:hint="@string/result"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:background="#393939"
             android:textAlignment="center"
-            android:textColor="@color/darkblue"
-            android:textSize="42sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textColor="@color/white"
+            android:textSize="32sp" />
 
-        <EditText
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText1"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto_medium"
-            android:padding="8dp"
-            android:textColorHint="#FFFFFF"
-            android:hint="@string/enter_first_value"
-            android:layout_margin="8dp"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="32sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="wrap_content"
+            android:hint="VALUE 1"
+            android:inputType="number"
 
-    <EditText
-        android:id="@+id/editText2"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@null"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:boxBackgroundMode="outline">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="VALUE 2"
+            android:inputType="number"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:hint="@string/enter_second_value"
-        android:fontFamily="@font/roboto_medium"
-        android:padding="8dp"
-        android:textColorHint="@color/white"
-        android:layout_margin="8dp"
-        android:textAlignment="textStart"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="vertical">
 
     <TableRow
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btPyt"
-                android:layout_weight="1"
-                app:strokeColor="@color/darkblue"
-                app:strokeWidth="2dp"
-                android:text="@string/pyth"
-                android:textSize="24sp"
-                android:backgroundTint="@color/lighterblue"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:cornerRadius="0dp" />
+        <Button
+            android:id="@+id/btPyt"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="#80000000"
+            android:text="@string/pyth"
+            android:textSize="24sp"
+            app:cornerRadius="10dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btCir"
-                android:text="@string/o"
-                app:strokeColor="@color/darkblue"
-                app:strokeWidth="2dp"
-                android:backgroundTint="@color/lighterblue"
-                android:textSize="24sp"
-                android:layout_weight="1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:cornerRadius="0dp" />
+        <Button
+            android:id="@+id/btCir"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="#80000000"
+            android:text="@string/o"
+            android:textSize="24sp"
+            app:cornerRadius="10dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btCyl"
-                android:textColor="@color/white"
-                android:text="@string/cyl"
-                android:layout_weight="1"
-                app:strokeColor="@color/darkblue"
-                android:textSize="24sp"
-                app:strokeWidth="2dp"
-                android:backgroundTint="@color/lighterblue"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:cornerRadius="0dp" />
+        <Button
+            android:id="@+id/btCyl"
+            android:layout_width="80dp"
+            android:layout_margin="16dp"
+            android:layout_height="80dp"
+            android:backgroundTint="#80000000"
+            android:text="@string/cyl"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:cornerRadius="10dp" />
 
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btMul"
-            android:layout_weight="1"
-            app:strokeColor="@color/darkblue"
-            android:textSize="24sp"
-            app:strokeWidth="2dp"
-            android:text="@string/mult"
-            android:backgroundTint="@color/lighterblue"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:cornerRadius="0dp" />
+            android:layout_margin="16dp"
+            android:backgroundTint="#80000000"
+            android:text="@string/mult"
+            android:textSize="24sp"
+            app:cornerRadius="10dp"
+            />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btSqR"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/lighterblue"
+            android:layout_margin="16dp"
+            android:backgroundTint="#80000000"
             android:text="@string/sqrt"
             android:textSize="24sp"
-            app:cornerRadius="0dp"
+            app:cornerRadius="10dp"
+            />
 
-            app:strokeColor="@color/darkblue"
-            app:strokeWidth="2dp" />
-
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btPro"
-            android:textColor="@color/white"
-            android:text="@string/proc"
-            android:textSize="24sp"
-            android:layout_weight="1"
-            app:strokeColor="@color/darkblue"
-            app:strokeWidth="2dp"
-            android:backgroundTint="@color/lighterblue"
             android:layout_width="80dp"
+            android:layout_margin="16dp"
             android:layout_height="80dp"
-            app:cornerRadius="0dp" />
+            android:backgroundTint="#80000000"
+            android:text="@string/proc"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:cornerRadius="10dp"
+           />
 
     </TableRow>
 
     <TableRow
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btAdd"
-            android:layout_weight="1"
-            app:strokeColor="@color/darkblue"
-            app:strokeWidth="2dp"
-            android:textSize="24sp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="#80000000"
             android:text="@string/add"
-            android:backgroundTint="@color/lighterblue"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:cornerRadius="0dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btSub"
-            android:text="@string/sub"
-            app:strokeColor="@color/darkblue"
-            app:strokeWidth="2dp"
-            android:layout_weight="1"
             android:textSize="24sp"
-            android:backgroundTint="@color/lighterblue"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/btSub"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:cornerRadius="0dp" />
+            android:layout_margin="16dp"
+            android:backgroundTint="#80000000"
+            android:text="@string/sub"
+            android:textSize="24sp"
+            app:cornerRadius="10dp"
+          />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btDiv"
-            android:textColor="@color/white"
-            android:text="@string/div"
-            android:textSize="24sp"
-            android:layout_weight="1"
-            app:strokeColor="@color/darkblue"
-            app:strokeWidth="2dp"
-            android:backgroundTint="@color/lighterblue"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:cornerRadius="0dp" />
+            android:layout_margin="16dp"
+            android:backgroundTint="#80000000"
+            android:text="@string/div"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:cornerRadius="10dp" />
 
     </TableRow>
 
+    </LinearLayout>
 
 </LinearLayout>
